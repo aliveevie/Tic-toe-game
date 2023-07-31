@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState } from 'react';
+import './App.css'
+import FrontPage from './components/Frontpage';
+import Choice from './components/Choice';
+import Square from './components/Square';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  const [frontPage, setFrontPage] = useState(true)
+  function handleClick(){
+    setFrontPage(!frontPage)
+  }
+
+  const [play, setPlay] = useState(true);
+
+  function handlePlay(){
+    setPlay(false)
+    setFrontPage(false)
+  }
+
+
+  return(
+    <div className='container'>
+      <div className='innerContainer'>
+         { frontPage ? <FrontPage  handleClick={handleClick} /> : 
+         <Choice handleClick={handleClick} handlePlay={handlePlay} />}
+         { !play && <Square /> }
     </div>
-  );
-}
+    </div>
+   
+  )
+};
 
 export default App;
