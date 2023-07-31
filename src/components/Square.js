@@ -1,5 +1,11 @@
  import '../App.css'
  
- export default function Square({value, onSquareClick}) {
-    return <button>X</button>;
+ export default function Square({selectedOption}) {
+    console.log(selectedOption)
+    return (
+        <div>
+            
+            <button className='square'>{selectedOption.toString()}</button>
+        </div>
+    )
   }

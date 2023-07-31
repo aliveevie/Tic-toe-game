@@ -6,28 +6,40 @@ import Choice from './components/Choice';
 import Square from './components/Square';
 
 const App = () => {
-  const [frontPage, setFrontPage] = useState(true)
+  const [frontPage, setFrontPage] = useState(true);
+  const [selectedOption, setSelectedOption] = useState(null);
+ 
   function handleClick(){
-    setFrontPage(!frontPage)
-  }
-
-  const [play, setPlay] = useState(true);
-
-  function handlePlay(){
-    setPlay(false)
     setFrontPage(false)
   }
+
+  function handleSelectedOption(option){
+    setSelectedOption(option)
+  }
+
+  function handleBackClick(){
+    setSelectedOption(null);
+    setFrontPage(true);
+  }
+
+  
 
 
   return(
     <div className='container'>
       <div className='innerContainer'>
-         { frontPage ? <FrontPage  handleClick={handleClick} /> : 
-         <Choice handleClick={handleClick} handlePlay={handlePlay} />}
-         { !play && <Square /> }
+         { frontPage && <FrontPage  handleClick={handleClick} />}
+         { !frontPage && !selectedOption && (<Choice handlePlay={handleSelectedOption} 
+            handleClick={handleBackClick}
+         />)}
+
+         { !frontPage && selectedOption && (<Square selectedOption={selectedOption}
+            handleBackClick={handleBackClick}
+         
+         />)}
+
     </div>
     </div>
-   
   )
 };
 
