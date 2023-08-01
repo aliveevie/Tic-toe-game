@@ -69,13 +69,28 @@ ul {
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 100px;
+  height: 100px;
 }
 
 .board-row:after {
   clear: both;
   content: '';
   display: table;
+  
+  background: rgba(40,40,40,1)
+    -webkit-radial-gradient(center, rgba(40,80,60,1), rgba(0,20,20,.6));
+  background: rgba(40,40,40,1)
+    -moz-radial-gradient(center, rgba(40,80,60,1), rgba(0,20,20,.6));
+  background: rgba(40,40,40,1)
+    -ms-radial-gradient(center, rgba(40,80,60,1), rgba(0,20,20,.6));
+  background: rgba(40,40,40,1)
+    radial-gradient(center, rgba(40,80,60,1), rgba(0,20,20,.6));
+  background-size: cover;
+  position: relative;
+  margin: 0 auto;
+
+  
 }
 
 .status {
@@ -130,3 +145,48 @@ ul {
   right: 15px;
 }
 
+.player-one-turn,
+.player-two-turn {
+  position: absolute;
+  top: 0;
+  width: 170px;
+  height: 50px;
+  z-index: -10;
+  color: white;
+  text-align: center;
+}
+
+.player-one-turn p,
+.player-two-turn p {
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+
+.players{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.player1{
+  margin-left: 20px;
+  color: red;
+  display: block;
+}
+
+
+.player2{
+  margin-left: 50px;
+  color: blue;
+  display: block;
+}
+
+.reset{
+  margin-left: 70px;
+}
+
+.red{
+  color: red;
+}

@@ -1,9 +1,9 @@
-export default function FrontPage({ handleClick }){
+export default function FrontPage({ handlePlay }){
     return(
         <>
          <div>How do you <br></br>want to play</div>
-        <button onClick={handleClick} >One Player</button>
-        <button onClick={handleClick} >Two Player</button>
+        <button onClick={() => handlePlay('Computer') } >One Player</button>
+        <button onClick={() => handlePlay('Player 2')} >Two Player</button>
         </>
     )
 }

@@ -1,11 +1,19 @@
- import '../App.css'
- 
- export default function Square({selectedOption}) {
-    console.log(selectedOption)
-    return (
-        <div>
-            
-            <button className='square'>{selectedOption.toString()}</button>
-        </div>
-    )
-  }
+import React, { useState, useEffect } from "react";
+
+export default function Square({ selectedOption, onSquareClick }) {
+  const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    setValue(selectedOption);
+  }, [selectedOption]);
+
+  const handleClick = () => {
+    onSquareClick();
+  };
+
+  return (
+    <button className="square" onClick={handleClick}>
+      {value}
+    </button>
+  );
+}
