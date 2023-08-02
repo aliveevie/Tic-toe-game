@@ -45,7 +45,7 @@ const App = () => {
          />)}
 
          { !frontPage && selectedOption && (<Board selectedOption={selectedOption}
-           
+           selectedPlayer={selectedPlayer}
          />)}
 
     </div>
