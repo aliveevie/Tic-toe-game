@@ -12,7 +12,18 @@ const App = () => {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [score1, setScore1] = useState(0);
   const [score2, setScore2] = useState(0);
+  const [gameEnded, setGameEnded] = useState(false);
  
+
+
+  if (gameEnded) {
+    // Update scores using the state setters
+    setScore1(prevScore1 => prevScore1 + 1);
+    setScore2(prevScore2 => prevScore2 + 1);
+  };
+  
+
+
   function handleClick(){
     setFrontPage(false)
   }
@@ -32,6 +43,7 @@ const App = () => {
       setFrontPage(false)
   }
 
+ 
   return(
     <div className='container'>
      
@@ -45,8 +57,12 @@ const App = () => {
             handleClick={handleBackClick} 
          />)}
 
-         { !frontPage && selectedOption && (<Board selectedOption={selectedOption}
-           selectedPlayer={selectedPlayer}  score1={score1} score2={score2}
+         { !frontPage && selectedOption && (<Board 
+            selectedOption={selectedOption}
+           selectedPlayer={selectedPlayer}  
+           setGameEnded={setGameEnded}
+           setScore1={setScore1}
+           setScore2={setScore2}
          />)}
 
     </div>

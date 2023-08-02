@@ -30,32 +30,31 @@ export default function Board({ selectedOption, selectedPlayer }) {
         }
       }
     }
-   
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
   };
 
   const winner = calculateWinner(squares);
   let status;
+   
   if (winner) {
-    if(winner===selectedOption){
-      status = 'You win!'
-    }
-    else if(winner==='draw'){
-      status = 'Draw'
-    }
-    else{
-      status = 'You Lost!'
+    if (winner === selectedOption) {
+      status = 'You win!';
+     
+      // Update the scores here
+    } else if (winner === 'draw') {
+      status = 'Draw';
+       // Update the scores here
+    } else {
+      status = 'You Lost!';
+      // Update the scores here
     }
     setTimeout(() => {
-      setSquares(Array(9).fill(null)); 
+      setSquares(Array(9).fill(null));
     }, 2500);
+  };
 
-  }
-    
   
-
-
   const makeComputerMove = (currentSquares) => {
     const emptySquares = [];
     for (let i = 0; i < currentSquares.length; i++) {
@@ -75,29 +74,7 @@ export default function Board({ selectedOption, selectedPlayer }) {
     }
   };
 
-  function calculateWinner(squares) {
-    const lines = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
-    ];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
-      }
-    }
-    if (squares.every(square => square !== null)) {
-      return 'draw';
-    }
-    return null;
-  }
-
+  
   return (
     <>
     <div>{status}</div>
@@ -145,4 +122,30 @@ export default function Board({ selectedOption, selectedPlayer }) {
       </div>
     </>
   );
+}
+
+
+
+
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  if (squares.every(square => square !== null)) {
+    return 'draw';
+  }
+  return null;
 }
