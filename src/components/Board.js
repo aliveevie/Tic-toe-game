@@ -41,10 +41,19 @@ export default function Board({ selectedOption, selectedPlayer }) {
     if(winner===selectedOption){
       status = 'You win!'
     }
+    else if(winner==='draw'){
+      status = 'Draw'
+    }
     else{
       status = 'You Lost!'
     }
+    setTimeout(() => {
+      setSquares(Array(9).fill(null)); 
+    }, 2500);
+
   }
+    
+  
 
 
   const makeComputerMove = (currentSquares) => {
