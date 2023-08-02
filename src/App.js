@@ -10,6 +10,8 @@ const App = () => {
   const [frontPage, setFrontPage] = useState(true);
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [score1, setScore1] = useState(0);
+  const [score2, setScore2] = useState(0);
  
   function handleClick(){
     setFrontPage(false)
@@ -30,22 +32,21 @@ const App = () => {
       setFrontPage(false)
   }
 
-  
-
-
   return(
     <div className='container'>
      
-          { !frontPage && selectedOption && (<Players selectedPlayer={selectedPlayer}  handleBackClick={handleBackClick} />)}
+          { !frontPage && selectedOption && (<Players selectedPlayer={selectedPlayer}  handleBackClick={handleBackClick} 
+            score1={score1} score2={score2}
+          />)}
   
       <div className='innerContainer'>
          { frontPage && <FrontPage  handleClick={handleClick}  handlePlay={handleSelectedPlayer} />}
          { !frontPage && !selectedOption && (<Choice handlePlay={handleSelectedOption} 
-            handleClick={handleBackClick}
+            handleClick={handleBackClick} 
          />)}
 
          { !frontPage && selectedOption && (<Board selectedOption={selectedOption}
-           selectedPlayer={selectedPlayer}
+           selectedPlayer={selectedPlayer}  score1={score1} score2={score2}
          />)}
 
     </div>
