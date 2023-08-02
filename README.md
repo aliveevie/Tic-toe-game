@@ -31,7 +31,7 @@ This is a simple Tic Tac Toe game built with React.
 
 ## Live Demo
 
-You can play the game online: [Tic Tac Toe Game](https://your-netlify-site-url.netlify.app/)
+You can play the game online: [Tic Tac Toe Game](https://64ca878ce6fd9d17001b1211--cheery-dusk-71bebe.netlify.app)
 
 ## Screenshots
 
